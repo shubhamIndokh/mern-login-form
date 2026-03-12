@@ -10,7 +10,8 @@ export const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
         const exist = await User.findOne({ email });
-        
+
+
 
         if (exist && exist.isVerified) {
             return res.status(400).json({ message: "User already exists" });
@@ -30,6 +31,7 @@ export const signup = async (req, res) => {
 
 
     } catch (error) {
+
         res.status(500).json({ error: error.message })
     }
 };

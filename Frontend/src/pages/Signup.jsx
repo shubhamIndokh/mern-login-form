@@ -18,6 +18,7 @@ const Signup = () => {
         email,
         password,
       });
+      
       localStorage.setItem("email", email);
       alert(res.data.message);
       navigate("/verifyemail");

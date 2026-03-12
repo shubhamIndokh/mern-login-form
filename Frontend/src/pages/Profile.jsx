@@ -8,12 +8,24 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem("token");
+      try {
+        const token = localStorage.getItem("token");
+        console.log(token);
+        
 
-      const res = await API.get("/profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setUser(res.data);
+        const res = await API.get("/profile", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(res.data);
+      } catch (error) {
+        console.log(error);
+
+        if (error.response?.status === 401) {
+          alert("Session expired, please login again");
+          localStorage.removeItem("token");
+          navigate("/");
+        }
+      }
     };
     fetchProfile();
   }, []);

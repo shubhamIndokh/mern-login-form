@@ -8,7 +8,7 @@ export const verifyToken = (req, res, next) => {
         }
 
         const token = header.split(" ")[1]; //header ko split karke uska bearer token wala part rakh liya 
-        const decoded = jwt.verify(token, "secretKey");
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         req.user = decoded;
         next();
