@@ -5,27 +5,27 @@ export const transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // Use true for port 465, false for port 587
     auth: {
-        user: "shubhamindokh@gmail.com",
-        pass: "seob dqeq ykve cisb",
+        user: "otpayehai@gmail.com",
+        pass: "okan nfhn enou nqcx",
     },
 });
 
 
-const sendEmail = async () => {
-    try {
-        const info = await transporter.sendMail({
-            from: '"Gmail" <shubhamindokh@gmail.com>',
-            to: "sv005144@gmail.com",
-            subject: "Hello ✔",
-            text: "Hello world?", // Plain-text version of the message
-            html: "<b>Hello world?</b>", // HTML version of the message
-        });
+// const sendEmail = async () => {
+//     try {
+//         const info = await transporter.sendMail({
+//             from: '"Gmail" <otpayehai@gmail.com>',
+//             to: "",
+//             subject: "Hello ✔",
+//             text: "Hello world?", // Plain-text version of the message
+//             html: "<b>Hello world?</b>", // HTML version of the message
+//         });
 
 
-    } catch (error) {
-        console.log(error);
+//     } catch (error) {
+//         console.log(error);
 
-    }
-}
+//     }
+// }
 
-sendEmail();
+// sendEmail();
