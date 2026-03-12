@@ -66,7 +66,7 @@ export const login = async (req, res) => {
         if (!match) {
             return res.status(400).json({ message: "Wrong password" })
         }
-        const token = jwt.sign({ id: user._id }, "secretKey", {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
 
@@ -106,7 +106,7 @@ export const resetPassword = async (req, res) => {
         user.password = hashedPassword;
         user.verificationCode = undefined;
         await user.save();
-        const token = jwt.sign({ id: user._id }, "secretKey", { expiresIn: "7d" },)
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" },)
         res.json({ success: true, message: "Password reset successful", token })
     } catch (error) {
         res.status(500).json({ message: error.message });
