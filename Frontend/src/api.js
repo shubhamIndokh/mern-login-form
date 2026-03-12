@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:5000/api/auth",
+    baseURL: "https://mern-login-form-baceknd.vercel.app/api/auth",
 })
 
 export default API;
