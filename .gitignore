@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# logs
+logs
+*.log
+
+# runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# build folders
+dist/
+build/
+.next/
+out/
+
+# React / Vite cache
+.vite
+.cache
+.parcel-cache
+
+# coverage
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# temp files
+tmp/
+temp/
+
+# MongoDB local data (optional)
+data/
+
