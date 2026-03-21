@@ -11,25 +11,29 @@ export const signup = async (req, res) => {
         const { name, email, password } = req.body;
         const exist = await User.findOne({ email });
 
-
-
-        if (exist && exist.isVerified) {
-            return res.status(400).json({ message: "User already exists" });
-        }
-
         const hashedPassword = await bcrypt.hash(password, 10);
-
         const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+        if (exist) {
+            if (exist.isVerified) {
+                return res.status(400).json({ message: "User already exist" });
+            }
+            exist.name = name;
+            exist.password = hashedPassword;
+            exist.verificationCode = verificationCode;
 
-        const user = await User.create({
-            name, email, password: hashedPassword, verificationCode
-        })
+            await exist.save();
+            await sendVerificationCode(exist.email, verificationCode);
 
-        sendVerificationCode(user.email, verificationCode);
-        res.json({ message: "signup success " })
+            return res.json({ message: "signup success " })
 
+        } else {
 
-
+            const user = await User.create({
+                name, email : email.toLowerCase(), password: hashedPassword, verificationCode
+            })
+            await sendVerificationCode(user.email, verificationCode);
+            return res.json({ message: "signup success " })
+        }
     } catch (error) {
 
         res.status(500).json({ error: error.message })

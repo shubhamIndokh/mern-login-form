@@ -19,13 +19,13 @@ const Home = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/login" className="w-full sm:w-auto">
-            <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition font-semibold">
+            <button className="hover:cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition font-semibold">
               Login
             </button>
           </Link>
 
           <Link to="/signup" className="w-full sm:w-auto">
-            <button className="w-full border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg transition font-semibold">
+            <button className="hover:cursor-pointer w-full border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg transition font-semibold">
               Signup
             </button>
           </Link>
